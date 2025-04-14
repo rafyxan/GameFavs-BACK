@@ -30,7 +30,7 @@ public class Videogame {
     @Column(length = 255)
     private String developer;
 
-    @Column(nullable = false) // Increased length
+    @Column(nullable = false, columnDefinition = "TEXT") // Use TEXT for unlimited length
     private String description;
 
     @Column(length = 255)

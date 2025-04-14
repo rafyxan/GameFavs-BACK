@@ -29,11 +29,13 @@ public class UserController {
         return userService.loginUser(username, password);
     }
 
+    // Este metodo devuelve todos los usuarios de la base de datos
     @GetMapping("/all")
     public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
+    // Este metodo recibe un usuario y lo registra en la base de datos
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
@@ -60,25 +62,25 @@ public class UserController {
     @GetMapping("/me")
     public ResponseEntity<Map<String, Object>> verifyToken(@RequestParam String token) {
         try {
-            // Extract the username from the token
+            // Extraer el username del token
             String username = jwUtil.extractUsername(token);
 
-            // Validate the token
+            // Validar el token
             boolean isValid = jwUtil.validateToken(token, username);
 
-            // Get the user ID
+            // Get el user ID
             Optional<User> user = userService.findByUsername(username);
             Long userId = user.map(User::getId).orElse(null);
 
-            // Create a response map
+            // Crear map para la respuesta
             Map<String, Object> response = new HashMap<>();
             response.put("isValid", isValid);
             response.put("userId", userId);
 
-            // Return the response with token validity and user ID
+            // Devuelve la respuesta con el estado de validez del token y el ID del usuario
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            // Handle errors (e.g., invalid or expired token)
+            // Manejar errores (e.g., invalid or expired token)
             Map<String, Object> response = new HashMap<>();
             response.put("isValid", false);
             response.put("userId", null);

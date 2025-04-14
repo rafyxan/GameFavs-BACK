@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserVideogameService {
@@ -35,6 +34,7 @@ public class UserVideogameService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    // Metodo para añadir un UserVideogame mediante el id de usuario, id de videojuego, id de estado y el objeto Videogame
     @Transactional
     public UserVideogame addUserVideogame(int user_id, int videogame_id, int status_id, Videogame videogameAdd) {
         logger.info("Adding UserVideogame: user_id={}, videogame_id={}, status_id={}", user_id, videogame_id, status_id);
@@ -73,8 +73,7 @@ public class UserVideogameService {
         return userVideogame;
     }
 
-
-
+    // Metodo para eliminar un UserVideogame mediante el id de usuario, id de videojuego y id de estado
     @Transactional
     public void deleteUserVideogame(Long userId, Long videogameId, Long statusId) {
         logger.info("Deleting UserVideogame: userId={}, videogameId={}, statusId={}", userId, videogameId, statusId);

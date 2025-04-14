@@ -14,7 +14,9 @@ import java.util.List;
 
 @Service
 public class RawgApiService {
+    // URL de la API de RAWG
     private static final String RAWG_API_URL = "https://api.rawg.io/api/games";
+    // API key de RAWG
     private static final String API_KEY = "1e48647219f84d02b336ae8e100a2cd5"; // Reemplaza con tu API key
 
     @Autowired
@@ -80,9 +82,6 @@ public class RawgApiService {
         // Mapear la respuesta a la lista de videojuegos
         List<Videogame> videogames = mapResponseToVideogames(response);
 
-        // Guardar los videojuegos si es necesario
-        // videogameRepository.saveAll(videogames);
-
         return videogames;
     }
 
@@ -135,7 +134,7 @@ public class RawgApiService {
     }
 
 
-    // Métodos para mapear los nodos JSON a Strings
+    // Método para mapear los nodos JSON a Strings
     private String mapPlatforms(JsonNode platformsNode) {
         StringBuilder platforms = new StringBuilder();
         for (int i = 0; i < platformsNode.size(); i++) {
@@ -147,7 +146,7 @@ public class RawgApiService {
         return platforms.toString();
     }
 
-    // Métodos para mapear los nodos JSON a Strings
+    // Método para mapear los nodos JSON a Strings
     private String mapGenres(JsonNode genresNode) {
         StringBuilder genres = new StringBuilder();
         for (int i = 0; i < genresNode.size(); i++) {
@@ -159,7 +158,7 @@ public class RawgApiService {
         return genres.toString();
     }
 
-    // Métodos para mapear los nodos JSON a Strings
+    // Método para mapear los nodos JSON a Strings
     private String mapDevelopers(JsonNode developersNode) {
         StringBuilder developers = new StringBuilder();
         for (int i = 0; i < developersNode.size(); i++) {

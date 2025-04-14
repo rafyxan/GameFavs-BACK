@@ -60,6 +60,7 @@ public class UserVideogameController {
         userVideogameService.deleteUserVideogame(userId, videogameId, statusId);
     }
 
+    // Obtener los estados de un videojuego de un usuario
     @GetMapping("/status")
     public Map<String, Boolean> getUserVideogameStatuses(
             @RequestParam Long userId,

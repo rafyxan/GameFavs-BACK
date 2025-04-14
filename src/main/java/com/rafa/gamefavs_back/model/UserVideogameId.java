@@ -46,7 +46,7 @@ public class UserVideogameId implements Serializable {
         this.status_id = status_id;
     }
 
-    // Override equals and hashCode
+    // Override equals y hashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

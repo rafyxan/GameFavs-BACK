@@ -15,6 +15,7 @@ public class DataInitializer {
     @Autowired
     private StatusRepository statusRepository;
 
+    // Este método se ejecuta al iniciar la aplicación y crea los estados por defecto
     @PostConstruct
     public void init() {
         List<String> statusNames = Arrays.asList("favorito", "jugado", "por jugar");

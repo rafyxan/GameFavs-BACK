@@ -21,6 +21,7 @@ public class UserService {
     @Autowired
     private JwUtil jwUtil;
 
+    // Metodo para logearse un usuario
     public Optional<User> loginUser(String username, String password) {
         Optional<User> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
@@ -34,6 +35,7 @@ public class UserService {
         return Optional.empty(); // Credenciales inválidas
     }
 
+    // Metodo para registrar un nuevo usuario
     public User registerUser(User user) {
         // Cifrar la contraseña antes de guardar
         user.setPassword(passwordEncoder.encode(user.getPassword()));

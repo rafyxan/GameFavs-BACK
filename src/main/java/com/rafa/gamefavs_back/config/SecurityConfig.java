@@ -20,6 +20,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
                 .csrf(csrf -> csrf.disable()) // Disable CSRF
                 .cors(cors -> cors.disable()) // Disable CORS (or configure it if needed)
                 .authorizeHttpRequests(auth -> auth
